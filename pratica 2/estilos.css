@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(53, 33, 235);
+}
+
+html {
+    background: linear-gradient(90deg, aqua 0%, #00d4ff 100%);
+}
+
+
+h1{
+    color: white;
+}
+
+p{
+    color: #0f0
+    ;
+}
