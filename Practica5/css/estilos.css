@@ -1,0 +1,35 @@
+body{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+h1{
+     font-family: "Story Script", sans-serif;
+     text-align: center;
+     font-size: 40px;
+     color: #ff0000;
+}
+h2{
+     font-family: "Asimovian", sans-serif;
+     text-align: center;
+     font-size: 30px;
+     color: #333333;
+     }
+#cuadro{
+    padding: 50px;
+    margin: 100px;
+    border: 10px solid black;
+    background-color: pink;
+    }
+    .circulo{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        }
