@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Plebe hats</title>
+    
+
+</head>
+<body>
+<div class="iconos-superiores derecha">
+    <a href="#" onclick="document.getElementById('registerForm').style.display='block'"><i class="fas fa-user"></i></a>
+    <div id="registerForm" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; color:black; padding:20px; border:1px solid #ccc; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+        <form>
+            <h3>Registro de Usuario</h3>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono" required><br><br>
+            <button type="submit">Registrarme</button>
+            <button type="button" onclick="document.getElementById('registerForm').style.display='none'">Cerrar</button>
+        </form>
+    </div>
+    <a href="#" onclick="document.getElementById('surveyForm').style.display='block'"><i class="fas fa-shopping-cart"></i></a>
+    <div id="surveyForm" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white;color: black; padding:20px; border:1px solid #ccc; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+        <form>
+            <h3>Información de Envío</h3>
+            <label for="pais">País:</label><br>
+            <input type="text" id="pais" name="pais" required><br>
+            <label for="ciudad">Ciudad:</label><br>
+            <input type="text" id="ciudad" name="ciudad" required><br>
+            <label for="direccion">Dirección:</label><br>
+            <input type="text" id="direccion" name="direccion" required><br>
+            <label for="cp">Código Postal:</label><br>
+            <input type="text" id="cp" name="cp" required><br><br>
+            <button type="submit">Enviar</button>
+            <button type="button" onclick="document.getElementById('surveyForm').style.display='none'">Cerrar</button>
+        </form>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="estilo.css">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#"><img id="logo" src="logosf.jpeg" alt="Logo"></a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <img src="gorras.jpg" alt="gorra">
+   <h1 id="inicio">Bienvenidos a Nuestra Página Web</h1>
+        <p>Esta es la página de inicio de nuestra práctica 9. Aquí encontrarás información sobre nosotros, nuestros servicios y cómo contactarnos.</p>
+    <section id="nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una empresa dedicada a la venta de gorras de alta calidad. Nuestro objetivo es ofrecer productos que combinen estilo y funcionalidad.</p>
+    <section id="servicios">
+        <h3>Nuestros Servicios</h3>
+        <ul>
+            <li>Venta de gorras personalizadas</li>
+            <li>Envío a domicilio</li>
+            
+        </ul>
+    <section id="contacto">
+            <h4>Contacto</h4>
+            <p>Si tienes alguna pregunta o deseas más información, no dudes en contactarnos a través del siguiente correo electrónico: elplebehats@gmail.com</p>
+     <footer>
+        <p>&copy; 2025 El Plebe hats. Todos los derechos reservados.</p>
+    </footer>           
+        
+</body>
+</html>
