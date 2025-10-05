@@ -1,0 +1,35 @@
+ 
+html{
+    font-size: 16px;
+    text-align: center;
+    background-color: #efefef;
+    font-family: "Montserrat", sans-serif;
+}
+    div {
+      font-size: 4rem;
+      background-color: #ffffff;
+      width: 90%;
+      margin: 20px;
+      border: 1px solid #cccccc;
+      border-radius: 15px;;
+      display: block;
+ margin:0px auto;
+   box-shadow: 14px 15px 34px 0px rgba(93,114,211,0.75);
+-webkit-box-shadow: 14px 15px 34px 0px rgba(93,114,211,0.75);
+-moz-box-shadow: 14px 15px 34px 0px rgba(93,114,211,0.75);
+    }
+   
+  p {
+    font-size: 1.5rem; /* 30px porque el padre (div) tiene 20px */
+  }
+ 
+  #hijo {
+    font-size: 1rem;
+  }
+ 
+  @media (max-width: 600px) {
+    div {
+      font-size: 2rem;
+      background-color: blue;
+    }
+  }
