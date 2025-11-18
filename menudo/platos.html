@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platos Fuertes - Menús y Quesadillas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid menu-container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo.png" alt="Logo de Menudos Méndez Luévano" width="80" height="80" class="d-inline-block align-text-top me-2">
+                <span style="color: var(--color-acento);">Ménlendez Luévano</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="platos.html">Platos Fuertes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bebidas.html">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="postres.html">Postres</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container menu-container">
+        <h2 class="seccion-titulo">Platos Fuertes</h2>
+
+        <div class="row g-4 mb-5">
+            <div class="col-12 text-center mb-3">
+                <h3 class="display-6" style="color: var(--color-titulo-fijo);">Menudos, la especialidad de la casa</h3>
+            </div>
+            
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-lg">
+                    <img src="menudo.jpg" class="card-img-top producto-img" alt="Menudo tradicional, guisado y servido caliente">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Menudo Tradicional</h5>
+                        <p class="card-text">La receta de la abuela, con un caldo sustancioso y el mejor corte. Incluye aderezos.</p>
+                        <ul class="list-group list-group-flush lista-detalles">
+                            <li>Chico <span class="precio float-end">$70</span></li>
+                            <li>Mediano <span class="precio float-end">$80</span></li>
+                            <li>Grande <span class="precio float-end">$90</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-12 text-center mb-3">
+                <h3 class="display-6" style="color: var(--color-titulo-fijo);">Quesadillas y Guisados</h3>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <img src="quesadilla1.jpg" class="card-img-top producto-img" alt="Quesadilla simple de maíz con queso fresco">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Quesadilla Simple</h5>
+                        <p class="card-text">Tortilla de maíz recién hecha con queso derretido.</p>
+                        <p class="precio">$15</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <img src="quesadilla.jpg" class="card-img-top producto-img" alt="Quesadilla con guisado rellena">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Quesadilla con Guisado</h5>
+                        <p class="card-text">Escoge tu guisado favorito para rellenar.</p>
+                        <p class="precio">$30</p>
+                        <ul class="lista-detalles">
+                            <li>Chicharrón de duro</li>
+                            <li>Chicharrón prensado</li>
+                            <li>Picadillo</li>
+                            <li>Huevo con chile</li>
+                            <li>Chorizo con chile</li>
+                            <li>Rajas con crema</li>
+                            <li>Papas a la mexicana</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer text-center">
+        <div class="container menu-container">
+            <p>&copy; 2025 Menudos Ménlendez Luévano. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
