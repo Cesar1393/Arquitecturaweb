@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agente Comercial 3P · Precio, Plaza y Promoción</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f7fb;--card:#fff;--ink:#16192c;--mut:#5d6380;--acc:#4f46e5;--acc2:#0ea5a4;--line:#e3e6f0;--soft:#eef0fb;--warn:#fff4e0;--warnink:#7a4b00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1220;--card:#181c30;--ink:#eceefa;--mut:#a3a9c8;--acc:#8b85ff;--acc2:#2dd4bf;--line:#2a2f4a;--soft:#20254a;--warn:#3a2e14;--warnink:#f2c879}}
+:root[data-theme="dark"]{--bg:#0f1220;--card:#181c30;--ink:#eceefa;--mut:#a3a9c8;--acc:#8b85ff;--acc2:#2dd4bf;--line:#2a2f4a;--soft:#20254a;--warn:#3a2e14;--warnink:#f2c879}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 60px}
+header{padding:44px 0 26px;text-align:center}
+.pill{display:inline-block;background:var(--soft);color:var(--acc);font-weight:600;font-size:13px;padding:5px 12px;border-radius:99px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:14px 0 10px}
+h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);max-width:620px;margin:0 auto}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}
+.three div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px;color:var(--mut)}
+.three b{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+h2{margin:0 0 4px;font-size:20px}
+h3{margin:18px 0 8px;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:4px}
+input,textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--acc);outline-offset:1px}
+textarea{min-height:70px;resize:vertical}
+.hint{font-size:12px;color:var(--mut);margin-top:3px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 20px;cursor:pointer}
+.primary{background:var(--acc);color:#fff}
+.primary:disabled{opacity:.6;cursor:wait}
+.ghost{background:var(--soft);color:var(--acc)}
+.msg{margin-top:14px;padding:11px 14px;border-radius:10px;background:var(--warn);color:var(--warnink);font-size:14px}
+[hidden]{display:none!important}
+.ai{border-color:var(--acc2)!important;background:color-mix(in srgb,var(--acc2) 10%,var(--bg))!important}
+.helper{margin-top:16px;padding:14px;border:1px dashed var(--acc2);border-radius:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.helper p{margin:0;flex:1;min-width:220px;font-size:14px;color:var(--mut)}
+.helper button{background:var(--acc2);color:#04302f}
+.helper button:disabled{opacity:.6;cursor:wait}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
+.tab{background:none;color:var(--mut);border-radius:10px 10px 0 0;padding:10px 16px;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--acc);box-shadow:inset 0 -3px 0 var(--acc)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat{background:var(--soft);border-radius:12px;padding:12px}
+.stat small{color:var(--mut);display:block;font-size:12px}
+.stat b{font-size:19px}
+.stat.hl{background:var(--acc);color:#fff}.stat.hl small{color:#e5e3ff}
+.range{position:relative;height:12px;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:99px;margin:34px 6px 30px}
+.mk{position:absolute;top:-8px;width:4px;height:28px;background:var(--ink);border-radius:3px;transform:translateX(-50%)}
+.mk span{position:absolute;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;font-weight:600}
+.mk.a span{top:-16px}.mk.b span{top:30px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+ul{margin:6px 0;padding-left:20px}li{margin:3px 0}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--soft);color:var(--acc)}
+.mk-card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.bar{display:flex;height:22px;border-radius:8px;overflow:hidden;margin:10px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.note{font-size:13px;color:var(--mut);border-left:3px solid var(--acc2);padding-left:10px;margin-top:16px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #fff6;border-top-color:#fff;border-radius:50%;animation:s .8s linear infinite;vertical-align:-2px;margin-right:8px}
+@keyframes s{to{transform:rotate(360deg)}}
+footer{text-align:center;color:var(--mut);font-size:13px;margin-top:30px}
+@media(max-width:640px){.three,.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="pill">Agente de análisis comercial</span>
+  <h1>Define tu <span>Precio, Plaza y Promoción</span> en minutos</h1>
+  <p class="sub">Describe tu producto y el agente te entrega un precio sugerido, los mercados geográficos más adecuados y un presupuesto de promoción por canal.</p>
+</header>
+
+<div class="three">
+  <div><b>💲 Precio</b>Rango de mercado, precio sugerido y comparación con similares.</div>
+  <div><b>📍 Plaza</b>País, estados, municipios y canales de distribución.</div>
+  <div><b>📣 Promoción</b>Presupuesto por canal, duración e indicadores.</div>
+</div>
+
+<section class="card" id="consulta">
+  <h2>Cuéntale al agente sobre tu producto</h2>
+  <div class="hint">Los campos con * son necesarios. Mientras más datos des, más útil será el análisis.</div>
+  <div class="grid">
+    <div><label for="nombre">Nombre del producto *</label><input id="nombre" placeholder="Ej. Gorras personalizadas"></div>
+    <div><label for="categoria">Categoría *</label><input id="categoria" placeholder="Ej. Moda y accesorios"></div>
+    <div class="full"><label for="desc">Descripción y características principales</label><textarea id="desc" placeholder="Materiales, diferenciadores, tamaños, personalización…"></textarea></div>
+    <div><label for="costo">Costo de producción o adquisición (por unidad)</label><input id="costo" inputmode="decimal" placeholder="Ej. 90"><div class="hint">Opcional. Ayuda a cuidar tu margen.</div></div>
+    <div><label for="publico">Público objetivo</label><input id="publico" placeholder="Ej. Jóvenes de 18 a 30 años"></div>
+    <div><label for="pais">País donde lo comercializarás *</label><input id="pais" value="México"></div>
+    <div><label for="presu">Presupuesto de promoción mensual</label><input id="presu" inputmode="decimal" placeholder="Ej. 5000"><div class="hint">Si lo dejas vacío, verás escenarios bajo, medio y alto.</div></div>
+  </div>
+  <div class="helper">
+    <p><b style="color:var(--ink)">¿No sabes algún dato?</b> Escribe al menos el nombre del producto y la IA sugerirá lo que falte (categoría, descripción, costo, público y presupuesto). Solo llena los campos vacíos y podrás editarlos.</p>
+    <button type="button" id="help">✨ Completar con ayuda de la IA</button>
+  </div>
+  <div class="btns">
+    <button class="primary" id="go">Analizar mi producto</button>
+    <button class="ghost" id="demo" type="button">Cargar ejemplo</button>
+  </div>
+  <div class="msg" id="err" hidden></div>
+  <div class="msg" id="nosample" hidden>Modo sin IA: no hay sesión de Claude, así que el análisis se calculará con reglas y datos de referencia incluidos en la página. Con sesión de Claude obtienes un análisis generado con IA.</div>
+</section>
+
+<section class="card" id="out" hidden>
+  <div id="qs"></div>
+  <div id="res">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-t="precio" aria-selected="true">💲 Precio</button>
+      <button class="tab" role="tab" data-t="plaza" aria-selected="false">📍 Plaza</button>
+      <button class="tab" role="tab" data-t="promo" aria-selected="false">📣 Promoción</button>
+    </div>
+    <div id="p-precio"></div><div id="p-plaza" hidden></div><div id="p-promo" hidden></div>
+    <p class="note" id="nota"></p>
+    <div class="btns"><button class="ghost" id="dl" hidden>⬇ Descargar análisis (.md)</button></div>
+  </div>
+</section>
+<footer>Las cifras son estimaciones orientativas, no sustituyen un estudio de mercado formal.</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const COLORS=['#4f46e5','#0ea5a4','#f59e0b','#ec4899','#22c55e','#64748b','#a855f7'];
+let sample=null,moneda='MXN';
+(window.claude?window.claude.use('sample'):Promise.resolve(null)).then(s=>{sample=s;if(!s)$('nosample').hidden=false}).catch(()=>{$('nosample').hidden=false});
+const fm=n=>{n=Number(n);return isFinite(n)?'$'+n.toLocaleString('es-MX',{maximumFractionDigits:0})+' '+moneda:'—'};
+const li=a=>'<ul>'+(a||[]).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  ['precio','plaza','promo'].forEach(k=>$('p-'+k).hidden=k!==t.dataset.t);
+});
+$('demo').onclick=()=>{
+  $('nombre').value='Gorras personalizadas';$('categoria').value='Moda y accesorios';
+  $('desc').value='Gorras de algodón con bordado personalizado, ajuste regulable, pedidos desde 1 pieza.';
+  $('costo').value='90';$('publico').value='Jóvenes de 18 a 30 años';$('pais').value='México';$('presu').value='5000';
+};
+
+function buildPrompt(d){
+  return `Eres un Especialista en Investigación de Mercados, Marketing Digital y Estrategias Comerciales. Analiza el producto y responde SOLO con un objeto JSON válido (sin texto extra ni comillas invertidas), en español, con tono profesional, claro y práctico para emprendedores y pymes.
+
+Datos del usuario: ${JSON.stringify(d)}
+
+Reglas:
+- Usa la moneda local del país indicado (código ISO en "moneda"). Todos los montos son números sin símbolos.
+- Los precios y datos de mercado son estimaciones basadas en tu conocimiento general (no consultaste internet); dilo con honestidad en "nota_datos" y distingue qué es dato de referencia, qué es estimación y qué es recomendación.
+- Si hay costo, verifica que el precio sugerido deje margen y menciónalo en la justificación.
+- Si el usuario dio presupuesto, "escenarios" trae UN solo escenario llamado "Tu presupuesto" con ese total. Si no lo dio, trae tres: "Bajo", "Medio" y "Alto". Los porcentajes de cada distribución suman 100 y "monto" = total*porcentaje/100.
+- "preguntas": solo si faltan datos importantes para afinar el análisis (máx. 3); si no, arreglo vacío. Aun así entrega el análisis con supuestos razonables.
+- Si "campos_sugeridos_por_ia" no está vacío, esos datos los estimó una IA y no el usuario: úsalos con cautela y menciónalo en "nota_datos".
+- Sé breve: frases cortas, máximo 5 elementos por lista.
+
+Formato exacto:
+{"moneda":"MXN","preguntas":[],
+"precio":{"min":0,"max":0,"promedio":0,"sugerido":0,"justificacion":"","comparacion":[{"producto":"","precio":0,"nota":""}],"factores":[""]},
+"plaza":{"pais":"","caracteristicas":"","mercados":[{"estado":"","municipios":[""],"prioridad":"Alta|Media|Baja","razon":""}],"canales":[""]},
+"promocion":{"objetivo":"","duracion":"","escenarios":[{"nombre":"","total":0,"distribucion":[{"canal":"","porcentaje":0,"monto":0,"detalle":""}]}],"redes":[""],"contenido":[""],"promociones":[""],"kpis":[""]},
+"nota_datos":""}`;
+}
+
+function rPrecio(p){
+  const lo=+p.min,hi=+p.max,pos=v=>Math.max(2,Math.min(98,hi>lo?(v-lo)/(hi-lo)*100:50));
+  return `<div class="stats">
+    <div class="stat"><small>Mínimo observado</small><b>${fm(p.min)}</b></div>
+    <div class="stat"><small>Promedio de mercado</small><b>${fm(p.promedio)}</b></div>
+    <div class="stat"><small>Máximo observado</small><b>${fm(p.max)}</b></div>
+    <div class="stat hl"><small>Precio sugerido</small><b>${fm(p.sugerido)}</b></div></div>
+  <div class="range"><div class="mk a" style="left:${pos(p.promedio)}%"><span>Promedio</span></div><div class="mk b" style="left:${pos(p.sugerido)}%"><span>Sugerido</span></div></div>
+  <h3>Justificación</h3><p>${esc(p.justificacion)}</p>
+  <h3>Comparación con productos similares</h3>
+  <div class="tw"><table><tr><th>Producto</th><th>Precio</th><th>Nota</th></tr>${(p.comparacion||[]).map(c=>`<tr><td>${esc(c.producto)}</td><td>${fm(c.precio)}</td><td>${esc(c.nota)}</td></tr>`).join('')}</table></div>
+  <h3>Factores que pueden modificar el precio</h3>${li(p.factores)}`;
+}
+function rPlaza(z){
+  return `<p><span class="tag">${esc(z.pais)}</span></p><p>${esc(z.caracteristicas)}</p>
+  <h3>Mercados recomendados</h3>
+  ${(z.mercados||[]).map(m=>`<div class="mk-card"><b>${esc(m.estado)}</b> <span class="tag">Prioridad ${esc(m.prioridad)}</span>
+    <div class="hint">${esc((m.municipios||[]).join(' · '))}</div><div>${esc(m.razon)}</div></div>`).join('')}
+  <h3>Canales de distribución recomendados</h3>${li(z.canales)}`;
+}
+function rPromo(m){
+  const esc_=(m.escenarios||[]).map(e=>`<div class="mk-card"><b>${esc(e.nombre)}</b> · ${fm(e.total)} al mes
+    <div class="bar">${(e.distribucion||[]).map((d,i)=>`<div title="${esc(d.canal)}" style="width:${+d.porcentaje||0}%;background:${COLORS[i%COLORS.length]}"></div>`).join('')}</div>
+    <div class="tw"><table><tr><th>Canal</th><th>%</th><th>Monto</th><th>En qué se usa</th></tr>${(e.distribucion||[]).map((d,i)=>`<tr><td><span class="dot" style="background:${COLORS[i%COLORS.length]}"></span>${esc(d.canal)}</td><td>${esc(d.porcentaje)}%</td><td>${fm(d.monto)}</td><td>${esc(d.detalle)}</td></tr>`).join('')}</table></div></div>`).join('');
+  return `<p><b>Objetivo de campaña:</b> ${esc(m.objetivo)}<br><b>Duración sugerida:</b> ${esc(m.duracion)}</p>
+  <h3>Distribución del presupuesto</h3>${esc_}
+  <h3>Redes sociales recomendadas</h3>${li(m.redes)}
+  <h3>Contenido</h3>${li(m.contenido)}
+  <h3>Promociones o descuentos</h3>${li(m.promociones)}
+  <h3>Indicadores para medir resultados</h3>${li(m.kpis)}`;
+}
+function render(r){
+  moneda=r.moneda||'MXN';
+  $('out').hidden=false;
+  const q=(r.preguntas||[]).filter(Boolean);
+  $('qs').innerHTML=q.length?`<div class="msg"><b>Para afinar el análisis, el agente te sugiere responder:</b>${li(q)}Ajusta el formulario y vuelve a analizar.</div>`:'';
+  $('res').hidden=!r.precio;
+  if(r.precio){
+    $('p-precio').innerHTML=rPrecio(r.precio);$('p-plaza').innerHTML=rPlaza(r.plaza||{});$('p-promo').innerHTML=rPromo(r.promocion||{});
+    $('nota').textContent=r.nota_datos||'';
+  }
+  $('out').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+const F={categoria:'categoria',descripcion:'desc',costo_unitario:'costo',publico_objetivo:'publico',presupuesto_mensual:'presu'};
+const aiFilled=new Set();
+Object.values(F).forEach(id=>$(id).addEventListener('input',()=>{aiFilled.delete(id);$(id).classList.remove('ai')}));
+$('help').onclick=async()=>{
+  const err=$('err');err.hidden=true;
+  const nombre=$('nombre').value.trim();
+  if(!nombre){err.textContent='Escribe primero el nombre del producto para que la IA pueda ayudarte.';err.hidden=false;return}
+  const known={producto:nombre,pais:$('pais').value.trim()||'México'};
+  const empty=[];
+  Object.entries(F).forEach(([k,id])=>{const v=$(id).value.trim();v?known[k]=v:empty.push(k)});
+  if(!empty.length){err.textContent='Ya llenaste todos los campos; no hay nada que completar.';err.hidden=false;return}
+  if(!sample){
+    const r=ayudaReglas(known);
+    empty.forEach(k=>{const id=F[k],v=r[k];if(v!=null&&String(v).trim()){$(id).value=String(v);$(id).classList.add('ai');aiFilled.add(id)}});
+    err.textContent='Modo sin IA: se llenaron sugerencias genéricas. Revísalas y captura tú el costo por unidad.';err.hidden=false;return}
+  const b=$('help');b.disabled=true;b.textContent='Pensando…';
+  try{
+    const r=await sample.json(`Eres especialista en investigación de mercados. Un emprendedor no sabe algunos datos de su producto. Con lo que sí sabes, sugiere valores realistas y breves para los campos faltantes. Responde SOLO con JSON válido, en español, sin texto extra.
+Datos conocidos: ${JSON.stringify(known)}
+Campos a completar: ${JSON.stringify(empty)}
+Reglas: costo_unitario y presupuesto_mensual son números sin símbolo, en la moneda local del país. descripcion: máximo 2 frases con características principales. publico_objetivo: una frase corta. Devuelve solo las claves de los campos a completar.`,{cache:false,modelTier:'quick'});
+    empty.forEach(k=>{const id=F[k],v=r&&r[k];if(v!=null&&String(v).trim()){$(id).value=String(v).trim();$(id).classList.add('ai');aiFilled.add(id)}});
+    if(!aiFilled.size){err.textContent='La IA no pudo sugerir datos con esa información. Intenta ser más específico.';err.hidden=false}
+  }catch(e){
+    err.textContent=e&&e.code==='rate_limited'?'Demasiadas consultas seguidas. Espera un momento e inténtalo de nuevo.':'No se pudo obtener ayuda de la IA. Inténtalo de nuevo.';err.hidden=false;
+  }finally{b.disabled=false;b.textContent='✨ Completar con ayuda de la IA'}
+};
+
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const CATS={
+ moda:{n:'Moda y accesorios',kw:['gorra','ropa','playera','camisa','zapato','tenis','moda','joyeria','bolsa','accesorio','vestido','sudadera'],m:2.6,r:[150,600]},
+ alimentos:{n:'Alimentos y bebidas',kw:['comida','aliment','bebida','cafe','snack','panaderia','postre','dulce','salsa','galleta','botana'],m:2,r:[40,250]},
+ belleza:{n:'Belleza y cuidado personal',kw:['belleza','cosmet','skincare','perfume','maquillaje','crema','shampoo','jabon'],m:3,r:[120,700]},
+ tecnologia:{n:'Tecnología y electrónica',kw:['tecnolog','electron','celular','gadget','software','cargador','audifono'],m:1.4,r:[200,1500]},
+ hogar:{n:'Hogar y decoración',kw:['hogar','mueble','decor','cocina','jardin','vela','lampara'],m:2.3,r:[150,900]},
+ servicios:{n:'Servicios y educación',kw:['servicio','consultoria','curso','clase','asesoria','taller'],m:2.5,r:[300,3000]},
+ general:{n:'Producto general',kw:[],m:2.2,r:[100,800]}};
+const detect=t=>{t=norm(t);for(const k in CATS)if(CATS[k].kw.some(w=>t.includes(w)))return k;return'general'};
+const MX=[
+ ['Ciudad de México',['Benito Juárez','Coyoacán','Cuauhtémoc'],'Gran concentración de población y consumo; ideal para probar la demanda rápido.'],
+ ['Nuevo León',['Monterrey','San Pedro Garza García','Guadalupe'],'Zona metropolitana de alto poder adquisitivo y hábito de compra en línea.'],
+ ['Jalisco',['Guadalajara','Zapopan','Tlaquepaque'],'Polo comercial y creativo con público joven y emprendedor.'],
+ ['Guanajuato',['León','Irapuato','Celaya'],'Corredor industrial con ciudades medianas en crecimiento y competencia publicitaria más baja.'],
+ ['Querétaro',['Querétaro','San Juan del Río'],'Crecimiento económico sostenido y buen nivel de ingreso en zonas urbanas.']];
+const PR={
+ bajo:[['Meta Ads (Instagram y Facebook)',40,'Anuncios segmentados por edad e intereses'],['Contenido orgánico propio',25,'Reels, fotos y videos hechos por ti'],['Promociones y descuentos',15,'Cupón de primera compra'],['WhatsApp Business y correo',10,'Seguimiento a interesados'],['Micro-influencers',10,'Canje de producto o pago pequeño']],
+ medio:[['Meta Ads',35,'Prospección y remarketing'],['TikTok (anuncios y contenido)',20,'Videos cortos con alcance'],['Google Ads (Búsqueda y Shopping)',15,'Captar quien ya busca el producto'],['Creación de contenido',15,'Foto y video de calidad'],['Influencers',10,'Reseñas y recomendaciones'],['Promociones y descuentos',5,'Ofertas por temporada']],
+ alto:[['Meta Ads',30,'Prospección, remarketing y catálogo'],['TikTok Ads',20,'Campañas de video'],['Google Ads',20,'Búsqueda, Shopping y display'],['Influencers',15,'Colaboraciones con creadores'],['Contenido profesional',10,'Producción de foto y video'],['Correo y remarketing',5,'Recuperar carritos y recompra']]};
+function reglas(d){
+  const cat=detect(d.categoria+' '+d.producto),C=CATS[cat],mx=norm(d.pais).includes('mexico');
+  const num=v=>parseFloat(String(v||'').replace(/[^0-9.]/g,''))||0,costo=num(d.costo_unitario),presu=num(d.presupuesto_mensual);
+  const r9=n=>Math.max(9,Math.round(n/10)*10-1),q=[];
+  let p=null;
+  if(costo){const b=costo*C.m;p={min:r9(b*.7),promedio:r9(b*1.1),max:r9(b*1.6),sugerido:r9(b)}}
+  else if(mx){const [a,z]=C.r,g=z-a;p={min:a,max:z,promedio:r9(a+g*.4),sugerido:r9(a+g*.3)}}
+  if(!costo)q.push(mx?'Si agregas el costo por unidad, el precio se calcula con tu margen real.':'Indica el costo por unidad para poder calcular un precio en tu país.');
+  if(!d.publico_objetivo)q.push('¿Cuál es tu público objetivo (edad, intereses)? Sirve para elegir mejor las redes.');
+  const nota='Modo sin IA: este análisis usa reglas fijas de la página (márgenes típicos por categoría y datos de referencia), no precios reales de competidores ni búsqueda en internet. Verifica los números con competidores reales antes de decidir.';
+  if(!p)return{moneda:'',preguntas:q,nota_datos:nota};
+  const m=costo?Math.round((p.sugerido-costo)/p.sugerido*100):null;
+  p.justificacion=costo?`El precio sugerido equivale a ${C.m} veces tu costo, un múltiplo habitual en ${C.n.toLowerCase()}. Deja un margen bruto de ${m}% para cubrir publicidad, envíos y comisiones.`:`Sin costo capturado se usa un rango de referencia para ${C.n.toLowerCase()} en México; el sugerido queda en la parte baja-media del rango para entrar competitivo.`;
+  p.comparacion=[['Opción económica',p.min,'Compite por precio; suele diferenciarse poco.'],['Precio promedio',p.promedio,'Punto de referencia del mercado.'],['Gama alta',p.max,'Requiere marca, calidad o personalización visibles.']].map(([producto,precio,nota])=>({producto,precio,nota}));
+  p.factores=['Calidad y diferenciación (personalización, materiales)','Comisiones y costos de envío según el canal','Temporadas altas (Buen Fin, Navidad, Día de las Madres)','Competencia directa en tu ciudad o marketplace','Volumen: precios por mayoreo o paquetes'];
+  const plaza=mx?{pais:'México',caracteristicas:'Referencia general: se priorizan zonas metropolitanas con demanda y logística favorables.',mercados:MX.map((e,i)=>({estado:e[0],municipios:e[1],prioridad:i<2?'Alta':i<4?'Media':'Baja',razon:e[2]}))}
+    :{pais:d.pais,caracteristicas:'No hay base geográfica cargada para este país; se sugiere un criterio general.',mercados:[{estado:'Capital y zonas metropolitanas',municipios:['Ciudad capital','Ciudades más pobladas'],prioridad:'Alta',razon:'Mayor concentración de consumidores y mejor logística para probar el producto.'}]};
+  plaza.canales=cat==='alimentos'?['Venta local y pedidos por WhatsApp','Apps de reparto (Rappi, Uber Eats, DiDi Food)','Mercados, ferias y tianguis','Tiendas de conveniencia y abarrotes']
+    :cat==='servicios'?['Sitio web con formulario de contacto','WhatsApp Business','LinkedIn y recomendaciones','Perfil de Google Business']
+    :['Marketplaces (Mercado Libre, Amazon)','Tienda propia en línea (Shopify, Tiendanube)','Redes sociales con WhatsApp Business','Venta directa y eventos locales'];
+  const mk=(nombre,total,k)=>({nombre,total,distribucion:PR[k].map(([canal,porcentaje,detalle])=>({canal,porcentaje,monto:Math.round(total*porcentaje/100),detalle}))});
+  const escenarios=presu?[mk('Tu presupuesto',presu,presu<5000?'bajo':presu<15000?'medio':'alto')]:[mk('Bajo',3000,'bajo'),mk('Medio',8000,'medio'),mk('Alto',20000,'alto')];
+  const ed=(String(d.publico_objetivo).match(/\d{2}/g)||[]).map(Number);
+  const redes=ed.length&&Math.max(...ed)<=30?['Instagram (Reels e historias)','TikTok','YouTube Shorts']:ed.length&&Math.min(...ed)>=35?['Facebook','WhatsApp','YouTube']:['Instagram','Facebook','TikTok'];
+  const promociones=['Cupón de primera compra (por ejemplo 10%)','Envío gratis a partir de cierto monto','Paquetes o 2x1 en temporadas altas'];
+  if(costo)promociones.push(`Con tu costo, un descuento de hasta ${Math.round(m/2)}% conserva la mitad de tu margen`);
+  return{moneda:mx?'MXN':'',preguntas:q,precio:p,plaza,
+    promocion:{objetivo:`Generar reconocimiento y primeras ventas de ${d.producto}`,duracion:'3 meses: mes 1 pruebas, mes 2 optimizar lo que funciona, mes 3 escalar',escenarios,redes,contenido:['Fotos y videos cortos del producto en uso','Testimonios y reseñas de clientes','Detrás de cámaras del proceso','Publicaciones con oferta y llamado a la acción'],promociones,kpis:['Alcance e impresiones','CTR (clics entre impresiones)','Costo por clic (CPC) y por venta (CPA)','Tasa de conversión','ROAS (ingresos entre inversión en anuncios)','Ventas mensuales']},
+    nota_datos:nota};
+}
+function ayudaReglas(d){
+  const k=detect(d.producto),C=CATS[k];
+  const pub={moda:'Jóvenes de 18 a 35 años',alimentos:'Familias y adultos de 25 a 55 años de la zona',belleza:'Mujeres y hombres de 20 a 40 años',tecnologia:'Jóvenes y adultos de 18 a 40 años',hogar:'Adultos de 25 a 50 años',servicios:'Emprendedores y pequeñas empresas',general:'Adultos de 18 a 45 años'}[k];
+  return{categoria:C.n,descripcion:'Producto de '+C.n.toLowerCase()+'. Agrega materiales, tamaños o rasgos que lo hagan único.',publico_objetivo:pub,presupuesto_mensual:3000};
+}
+
+let last=null,lastIn=null;
+function toMd(r,d){
+  const p=r.precio||{},z=r.plaza||{},m=r.promocion||{},L=a=>(a||[]).map(x=>'- '+x).join('\n');
+  return `# Análisis comercial: ${d.producto}\n\n## 1. Precio\n- Mínimo: ${fm(p.min)}\n- Promedio: ${fm(p.promedio)}\n- Máximo: ${fm(p.max)}\n- **Precio sugerido: ${fm(p.sugerido)}**\n\n${p.justificacion||''}\n\n| Producto | Precio | Nota |\n|---|---|---|\n${(p.comparacion||[]).map(c=>`| ${c.producto} | ${fm(c.precio)} | ${c.nota} |`).join('\n')}\n\nFactores:\n${L(p.factores)}\n\n## 2. Plaza\nPaís: ${z.pais||''}\n\n${z.caracteristicas||''}\n\n${(z.mercados||[]).map(x=>`- **${x.estado}** (${x.prioridad}): ${(x.municipios||[]).join(', ')}. ${x.razon}`).join('\n')}\n\nCanales:\n${L(z.canales)}\n\n## 3. Promoción\nObjetivo: ${m.objetivo||''}\nDuración: ${m.duracion||''}\n\n${(m.escenarios||[]).map(e=>`### ${e.nombre}: ${fm(e.total)}\n${(e.distribucion||[]).map(x=>`- ${x.canal}: ${x.porcentaje}% (${fm(x.monto)}) ${x.detalle||''}`).join('\n')}`).join('\n\n')}\n\nRedes:\n${L(m.redes)}\n\nContenido:\n${L(m.contenido)}\n\nPromociones:\n${L(m.promociones)}\n\nKPIs:\n${L(m.kpis)}\n\n> ${r.nota_datos||''}\n`;
+}
+(window.claude?window.claude.use('downloads'):Promise.resolve(null)).then(dl=>{
+  if(!dl)return;
+  $('dl').hidden=false;
+  $('dl').onclick=async()=>{
+    if(!last)return;
+    try{await dl.save({filename:'analisis-comercial.md',data:toMd(last,lastIn)})}catch(e){if(!e||e.code!=='declined'){$('err').textContent='No se pudo descargar el archivo.';$('err').hidden=false}}
+  };
+}).catch(()=>{});
+
+$('go').onclick=async()=>{
+  const err=$('err');err.hidden=true;
+  const d={producto:$('nombre').value.trim(),categoria:$('categoria').value.trim(),descripcion:$('desc').value.trim(),costo_unitario:$('costo').value.trim(),publico_objetivo:$('publico').value.trim(),pais:$('pais').value.trim(),presupuesto_mensual:$('presu').value.trim(),campos_sugeridos_por_ia:[...aiFilled]};
+  if(!d.producto||!d.categoria||!d.pais){err.textContent='Completa al menos el producto, la categoría y el país.';err.hidden=false;return}
+  if(!sample){last=reglas(d);lastIn=d;render(last);return}
+  const b=$('go');b.disabled=true;b.innerHTML='<span class="spin"></span>Analizando…';
+  try{
+    const r=await sample.json(buildPrompt(d),{cache:false,modelTier:'default'});
+    last=r;lastIn=d;render(r);
+  }catch(e){
+    last=reglas(d);lastIn=d;render(last);
+    err.textContent='No se pudo usar la IA, así que se mostró el análisis por reglas.';
+    err.hidden=false;
+  }finally{b.disabled=false;b.textContent='Analizar mi producto'}
+};
+</script>
+</body>
+</html>
